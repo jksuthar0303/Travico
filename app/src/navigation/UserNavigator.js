@@ -22,6 +22,7 @@ import GuideDetailScreen from '../screens/GuideDetail';
 import VehicleDetailScreen from '../screens/VehicleDetail';
 import CompletedTripDetail from '../screens/CompletedTrip';
 import TripGallery from '../screens/TripGallery';
+import Reviews from '../screens/Reviews';
 
 
 const Stack = createNativeStackNavigator();
@@ -72,23 +73,27 @@ export default function UserNavigator() {
             <Stack.Screen name="Summary" component={SummaryScreen} options={{ title: "Trip Summary" }} />
             <Stack.Screen name="Submit" component={SubmitScreen} options={{ title: 'Confirm & Send' }} />
             <Stack.Screen name="Places" component={PlacesScreen} options={{ title: 'Places' }} />
-            <Stack.Screen name="OnGoingTrip" component={LiveTripScreen} options={{ title: "OnGoing Trip",
-             headerRight: () => (
-                <View className="bg-green-500 px-3 py-1 rounded-full">
-                  <Text className="text-white text-sm font-medium">Live</Text>
-              </View>
+            <Stack.Screen name="OnGoingTrip" component={LiveTripScreen} options={{
+                title: "OnGoing Trip",
+                headerRight: () => (
+                    <View className="bg-green-500 px-3 py-1 rounded-full">
+                        <Text className="text-white text-sm font-medium">Live</Text>
+                    </View>
 
-        ), }}  />
+                ),
+            }} />
             <Stack.Screen name="PlaceDetail" component={PlaceDetailsScreen} options={{ title: 'Place Detail' }} />
-            <Stack.Screen name="Personal-Info" component={PersonalInfo} options={{title :"Personal Information"}} />
-            <Stack.Screen name="Change-Password" component={ChangePassword} options={{title :"Change Password"}} />
-            <Stack.Screen name="Privacy-Policy" component={PrivacyPolicy} options={{title :"Privacy Policy"}} />
-            <Stack.Screen name="Terms" component={TermsOfService} options={{title :"Terms of Service"}} />
-            <Stack.Screen name="Hotel-Detail" component={HotelDetailScreen} options={{title :"Hotel Detail"}} />
-            <Stack.Screen name="Guide-Detail" component={GuideDetailScreen} options={{title :"Guide Detail"}} />
-            <Stack.Screen name="Vehicle-Detail" component={VehicleDetailScreen} options={{title :"Vehicle Detail"}} />
-            <Stack.Screen name="CompletedTrip" component={CompletedTripDetail} options={{title :"Trip Detail"}} />
-            <Stack.Screen name="TripGallery" component={TripGallery} options={{title :"Trip Gallery"}} />
+            <Stack.Screen name="Personal-Info" component={PersonalInfo} options={{ title: "Personal Information" }} />
+            <Stack.Screen name="Change-Password" component={ChangePassword} options={{ title: "Change Password" }} />
+            <Stack.Screen name="Privacy-Policy" component={PrivacyPolicy} options={{ title: "Privacy Policy" }} />
+            <Stack.Screen name="Terms" component={TermsOfService} options={{ title: "Terms of Service" }} />
+            <Stack.Screen name="Hotel-Detail" component={HotelDetailScreen} options={{ title: "Hotel Detail" }} />
+            <Stack.Screen name="Guide-Detail" component={GuideDetailScreen} options={{ title: "Guide Detail" }} />
+            <Stack.Screen name="Vehicle-Detail" component={VehicleDetailScreen} options={{ title: "Vehicle Detail" }} />
+            <Stack.Screen name="CompletedTrip" component={CompletedTripDetail} options={{ title: "Trip Detail" }} />
+            <Stack.Screen name="TripGallery" component={TripGallery} options={{ title: "Trip Gallery" }} />
+            <Stack.Screen name="Reviews" component={Reviews} options={{ title: "Reviews" }} />
+
 
             <Stack.Screen
                 name="History"

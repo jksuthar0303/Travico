@@ -31,13 +31,37 @@ export default function GuideHomeScreen({
   const handleToggle = () => {
     setIsOnline(!isOnline);
   };
-
   const stats = [
-    { icon: Calendar, label: "Today's Tours", value: "2", change: "+1 from yesterday" },
-    { icon: DollarSign, label: "Today's Earnings", value: "$380", change: "+$120" },
-    { icon: Star, label: "Rating", value: "4.9", change: "127 reviews" },
-    { icon: Users, label: "Total Tourists", value: "156", change: "This month" },
+    {
+      icon: Calendar,
+      label: "Today's Tours",
+      value: "2",
+      change: "+1 from yesterday",
+      color: "#3b82f6", // Blue
+    },
+    {
+      icon: DollarSign,
+      label: "Today's Earnings",
+      value: "$380",
+      change: "+$120",
+      color: "#10b981", // Green
+    },
+    {
+      icon: Star,
+      label: "Rating",
+      value: "4.9",
+      change: "127 reviews",
+      color: "#f59e0b", // Amber / Gold
+    },
+    {
+      icon: Users,
+      label: "Total Tourists",
+      value: "156",
+      change: "This month",
+      color: "#8b5cf6", // Purple
+    },
   ];
+
 
   const todayBookings = [
     {
@@ -50,6 +74,7 @@ export default function GuideHomeScreen({
       price: 180,
       pickupLocation: "Hotel Le Meurice",
       phone: "+1 555-0123",
+
     },
     {
       id: "2",
@@ -97,11 +122,10 @@ export default function GuideHomeScreen({
           <View className="flex-row items-center mb-1">
             <Text className="text-lg font-semibold">{booking.destination}</Text>
             <Text
-              className={`ml-2 text-xs px-2 py-1 rounded-full ${
-                booking.status === "ongoing"
+              className={`ml-2 text-xs px-2 py-1 rounded-full ${booking.status === "ongoing"
                   ? "bg-blue-100 text-primary"
                   : "bg-gray-100 text-gray-700"
-              }`}
+                }`}
             >
               {booking.status === "ongoing" ? "In Progress" : "Upcoming"}
             </Text>
@@ -133,23 +157,23 @@ export default function GuideHomeScreen({
       <View className="flex-row gap-2">
         <TouchableOpacity
           onPress={() => alert("Coming Soon")}
-          className="flex-1 bg-primary/10 border border-primary/20 rounded-xl py-2 items-center"
+          className="flex-1 bg-primary rounded-3xl py-2 items-center"
         >
-          <Text>View Details</Text>
+          <Text className="text-white">View Details</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity className="w-10 h-10 rounded-xl border border-gray-200 items-center justify-center">
+        <TouchableOpacity className="w-10 h-10 rounded-3xl border border-gray-200 items-center justify-center">
           <Phone size={16} />
         </TouchableOpacity>
 
-        <TouchableOpacity className="w-10 h-10 rounded-xl border border-gray-200 items-center justify-center">
+        <TouchableOpacity className="w-10 h-10 rounded-3xl border border-gray-200 items-center justify-center">
           <MessageCircle size={16} />
         </TouchableOpacity>
 
         {booking.status === "ongoing" && (
           <TouchableOpacity
             onPress={onViewLiveTrip}
-            className="w-10 h-10 rounded-xl border border-gray-200 items-center justify-center"
+            className="w-10 h-10 rounded-3xl border border-gray-200 items-center justify-center"
           >
             <Navigation size={16} />
           </TouchableOpacity>
@@ -165,12 +189,11 @@ export default function GuideHomeScreen({
     >
       {/* Profile Card */}
       <View className="p-4 mb-4 flex-row items-center">
-        <TouchableOpacity
-          onPress={onViewProfile}
-          className="w-20 h-20 items-center rounded-full bg-blue-500 justify-center mr-3"
+        <View
+          className="w-20 h-20 items-center rounded-full bg-primary justify-center mr-3"
         >
           <User color="white" size={30} />
-        </TouchableOpacity>
+        </View>
 
         <View className="flex-1">
           <Text className="text-lg font-semibold">Welcome, Pierre</Text>
@@ -178,36 +201,41 @@ export default function GuideHomeScreen({
 
           <View className="mt-2 flex-row items-center justify-between pr-4">
             <Text
-              className={`text-sm font-medium ${
-                isOnline
+              className={`text-sm font-medium ${isOnline
                   ? "text-white px-2 rounded-2xl bg-green-600"
                   : "text-white bg-gray-400 px-2 rounded-2xl"
-              }`}
+                }`}
             >
               {isOnline ? "Online" : "Offline"}
             </Text>
-
-            <SwitchToggle
-              switchOn={isOnline}
-              onPress={handleToggle}
-              circleColorOff="white"
-              circleColorOn="white"
-              backgroundColorOn="#22c55e"
-              backgroundColorOff="#d1d5db"
-              containerStyle={styles.switchContainer}
-              circleStyle={styles.switchCircle}
-            />
           </View>
+
         </View>
+        <SwitchToggle
+          switchOn={isOnline}
+          onPress={handleToggle}
+          circleColorOff="white"
+          circleColorOn="white"
+          backgroundColorOn="#22c55e"
+          backgroundColorOff="#d1d5db"
+          containerStyle={styles.switchContainer}
+          circleStyle={styles.switchCircle}
+        />
       </View>
 
       {/* Stats */}
       <View className="flex-row flex-wrap -mx-1 mb-4">
         {stats.map((s, i) => (
           <View key={i} className="w-1/2 px-1 mb-3">
-            <View className="bg-white rounded-3xl shadow-md p-4 border border-gray-200">
-              <View className="w-10 h-10 rounded-xl bg-blue-50 items-center justify-center mb-3">
-                <s.icon size={18} color="#4a9eff" />
+            <View className="bg-white rounded-3xl shadow-md p-4 border border-gray-200"
+              style={{ borderLeftColor: s.color, borderLeftWidth: 3 }}
+
+            >
+              <View
+                className="w-10 h-10 rounded-xl items-center justify-center mb-3"
+                style={{ backgroundColor: `${s.color}20` }}
+              >
+                <s.icon size={18} color={s.color} />
               </View>
               <Text className="text-2xl mb-1">{s.value}</Text>
               <Text className="text-sm font-bold text-gray-500 mb-1">
@@ -218,6 +246,7 @@ export default function GuideHomeScreen({
           </View>
         ))}
       </View>
+
 
       {/* Tabs */}
       <View style={styles.tabsContainer}>
@@ -306,7 +335,6 @@ export default function GuideHomeScreen({
   );
 }
 
-/* ✅ Inline Styles for safer rendering */
 const styles = StyleSheet.create({
   bookingCard: {
     backgroundColor: "#fff",

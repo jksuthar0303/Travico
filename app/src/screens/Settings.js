@@ -165,7 +165,7 @@ export default function Settings({ navigation }) {
       {/* Logout */}
       <TouchableOpacity
         onPress={handleLogout}
-        className="bg-red-500 h-16 mb-10 rounded-3xl items-center justify-center"
+        className="bg-red-500 h-14 mb-10 rounded-3xl items-center justify-center"
       >
         <View className="flex-row items-center gap-2">
           <LogOut size={24} color="white" />

@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
+import { StatusBar } from "react-native"; 
 import { useAuthStore } from "../../store/useAuthStore";
 import AuthNavigator from "./AuthNavigator";
 import SplashScreen from "../screens/SplashScreen";
 import UserNavigator from "./UserNavigator";
-import { requestUserPermission, createNotificationChannel, getFcmTokenAndSave } from "../notifications/fcm";
 import GuideNavigator from "./GuideNavigator";
 import DriverNavigator from "./DriverNavigator";
+import {
+  requestUserPermission,
+  createNotificationChannel,
+  getFcmTokenAndSave,
+} from "../notifications/fcm";
 
 export default function RootNavigator() {
   const { user, role, checkLogin } = useAuthStore();
@@ -32,11 +37,19 @@ export default function RootNavigator() {
   if (showSplash) return <SplashScreen />;
 
   return (
-    <NavigationContainer>
-      {!user && <AuthNavigator />}
-      {user && role === "guide" && <GuideNavigator />}
-      {user && role === "driver" && <DriverNavigator />}
-      {user && role === "user" && <UserNavigator />}
-    </NavigationContainer>
+    <>
+      <StatusBar
+        backgroundColor="#ffffff" 
+        barStyle="dark-content" 
+        translucent={false}       
+      />
+
+      <NavigationContainer>
+        {!user && <AuthNavigator />}
+        {user && role === "guide" && <GuideNavigator />}
+        {user && role === "driver" && <DriverNavigator />}
+        {user && role === "user" && <UserNavigator />}
+      </NavigationContainer>
+    </>
   );
 }

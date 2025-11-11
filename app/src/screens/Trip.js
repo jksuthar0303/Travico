@@ -58,9 +58,7 @@ const dummyTrips = [
 
 export default function Trip({ navigation }) {
   return (
-    <SafeAreaView className="flex-1 bg-white p-4">
-      <Text className="text-2xl font-bold text-gray-700 mb-4">My Trips</Text>
-
+    <View className="flex-1 bg-white p-4">
       {dummyTrips.length === 0 ? (
         <View className="flex-1 justify-center items-center">
           <MapPin size={64} color="#a8d5ba" />
@@ -126,6 +124,6 @@ export default function Trip({ navigation }) {
           )}
         />
       )}
-    </SafeAreaView>
+    </View>
   );
 }

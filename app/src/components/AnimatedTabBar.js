@@ -1,13 +1,13 @@
 import React, { useRef, useEffect } from "react";
 import { View, TouchableOpacity, StyleSheet, Dimensions, Animated } from "react-native";
 import * as Animatable from "react-native-animatable";
-import { Home, Send, Shield, User } from "lucide-react-native";
+import { Calendar, Home, IndianRupee, Send, Shield, User } from "lucide-react-native";
 
 const { width } = Dimensions.get("window");
 const TAB_COUNT = 4;
 const TAB_WIDTH = width / TAB_COUNT;
 
-const icons = { Home, Trip: Send, SOS: Shield, Profile: User };
+const icons = { Home, Trip: Send, SOS: Shield, Profile: User, Schedule: Calendar,Earnings: IndianRupee };
 
 export default function AnimatedTabBar({ state, descriptors, navigation }) {
   const translateX = useRef(new Animated.Value(state.index * TAB_WIDTH)).current;
@@ -52,7 +52,7 @@ export default function AnimatedTabBar({ state, descriptors, navigation }) {
         return (
           <TouchableOpacity key={index} onPress={onPress} activeOpacity={0.8} style={styles.tabButton}>
             <Animatable.View animation={isFocused ? "pulse" : undefined} duration={250} iterationCount={1}>
-              <IconComponent size={22} color={isFocused ? "#007AFF" : "#999"} strokeWidth={2.2} />
+              <IconComponent size={22} color={isFocused ? "#4a9eff" : "#999"} strokeWidth={2.2} />
             </Animatable.View>
           </TouchableOpacity>
         );
@@ -89,6 +89,6 @@ const styles = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 4,
-    backgroundColor: "#007AFF",
+    backgroundColor: "#4a9eff",
   },
 });

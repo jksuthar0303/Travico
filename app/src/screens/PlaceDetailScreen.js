@@ -16,7 +16,7 @@ import {
 import MapView, { Marker } from "react-native-maps";
 import LinearGradient from "react-native-linear-gradient";
 
-export default function PlaceDetails() {
+export default function PlaceDetails({navigation}) {
     const [modalVisible, setModalVisible] = useState(false);
     const [rating, setRating] = useState(0);
     const [review, setReview] = useState("");
@@ -199,7 +199,7 @@ export default function PlaceDetails() {
                 <View className="mt-6">
                     <View className="flex-row items-center justify-between">
                         <Text className="text-lg font-bold text-gray-800 mb-2">Reviews</Text>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={()=>navigation.navigate("Reviews")}>
                             <Text className="font-bold text-primary mb-2">View All</Text>
                         </TouchableOpacity>
                     </View>

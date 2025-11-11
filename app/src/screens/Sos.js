@@ -19,7 +19,7 @@ export default function Sos() {
         {/* Universal Emergency Card */}
         <View
           style={styles.shadow}
-          className="bg-red-500 h-40 mx-4 rounded-2xl p-4 flex justify-between"
+          className="bg-red-500 h-40 m-4 rounded-2xl p-4 flex justify-between"
         >
           <View className="flex-row items-center gap-2">
             <AlertCircle size={30} color="#fff" />
